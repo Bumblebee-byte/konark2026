@@ -73,7 +73,7 @@ export default function FluidReveal({ topImage, bottomImage }: FluidRevealProps)
     return (
         <div
             ref={containerRef}
-            className="relative w-full h-full overflow-hidden bg-black cursor-none touch-none" // touch-none prevents scrolling while dragging
+            className="relative w-full h-full overflow-hidden bg-black cursor-none" //ouch-none prevents scrolling while dragging
             onMouseEnter={() => setIsHovering(true)}
             onMouseMove={(e) => handleMove(e.clientX, e.clientY)}
             onTouchMove={(e) => handleMove(e.touches[0].clientX, e.touches[0].clientY)} // ✅ ADDED TOUCH SUPPORT
