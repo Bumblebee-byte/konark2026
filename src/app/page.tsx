@@ -4,12 +4,14 @@ import Image from "next/image";
 import FluidReveal from "../components/FluidReveal";
 import Navigation from "../components/Navigation";
 import TiltCard from "../components/TiltCard";
-import GalleryScroll from "../components/GalleryScroll"; // ✅ Import the Gallery
+import GalleryScroll from "../components/GalleryScroll";
+// ✅ NEW IMPORTS
+import Sponsors from "../components/Sponsors";
+import Footer from "../components/Footer";
 
 export default function Home() {
 
     const scrollToDetails = () => {
-        // Modified to scroll to the gallery first, as it's the next section
         const gallerySection = document.getElementById('gallery-section');
         if (gallerySection) {
             gallerySection.scrollIntoView({ behavior: 'smooth' });
@@ -19,7 +21,7 @@ export default function Home() {
     return (
         <main className="w-full bg-[#111112] text-white">
 
-            {/* --- SECTION 1: HERO --- */}
+            {/* --- HERO --- */}
             <section className="h-screen w-full relative flex flex-col items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <FluidReveal topImage="/animegreen.jpg" bottomImage="/animeblue.jpg" />
@@ -38,13 +40,12 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* --- SECTION 2: LANDO NORRIS STYLE GALLERY --- */}
-            {/* This acts as the buffer between Hero and Events */}
+            {/* --- GALLERY --- */}
             <div id="gallery-section">
                 <GalleryScroll />
             </div>
 
-            {/* --- SECTION 3: EVENT DETAILS --- */}
+            {/* --- EVENT DETAILS --- */}
             <section id="details-section" className="min-h-screen w-full bg-[#050505] border-t border-white/10 p-6 md:p-20 relative z-10">
                 <div className="flex flex-col items-center text-center mb-16">
                     <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800">
@@ -64,6 +65,10 @@ export default function Home() {
                     <TiltCard title="Star Night" description="Conclude the fest with a live performance by a celebrity artist." icon="✨" />
                 </div>
             </section>
+
+            {/* --- ✅ NEW: SPONSORS & FOOTER --- */}
+            <Sponsors />
+            <Footer />
 
         </main>
     );
