@@ -53,7 +53,7 @@ export default function Navigation() {
             {/* 1. TOP BAR (Always Visible) */}
             <nav className="absolute top-0 w-full p-4 md:p-8 flex justify-between items-center z-50 pointer-events-auto">
 
-                {/* Logo / Links - Responsive Text Size */}
+                {/* Logo / Links */}
                 <div className="flex gap-4 md:gap-6">
                     <Link
                         href="https://gjust.ac.in/"
@@ -71,7 +71,7 @@ export default function Navigation() {
                     </Link>
                 </div>
 
-                {/* Menu Button - Responsive Padding */}
+                {/* Menu Button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className={`px-4 py-2 md:px-6 md:py-2 rounded-full text-[10px] md:text-xs font-bold uppercase cursor-pointer transition-all z-50 
@@ -93,7 +93,6 @@ export default function Navigation() {
                     >
 
                         {/* --- LEFT COLUMN: NAVIGATION LINKS --- */}
-                        {/* Added 'pt-24' specifically for mobile so links aren't hidden under the top bar */}
                         <div className="w-full md:w-1/2 h-full flex flex-col px-6 pt-24 pb-10 md:px-24 md:py-0 justify-start md:justify-center overflow-y-auto">
                             <div className="flex flex-col gap-4 md:gap-6">
                                 {menuItems.map((item, index) => (
@@ -104,7 +103,6 @@ export default function Navigation() {
                                             className="group flex items-center justify-between w-full cursor-pointer"
                                             onClick={() => item.submenu && toggleSubmenu(index)}
                                         >
-                                            {/* Responsive Text Size: 3xl on mobile, 5xl on desktop */}
                                             <h3 className="text-3xl md:text-5xl font-bold text-white group-hover:text-[#ff4d00] transition-colors uppercase tracking-tight">
                                                 {item.submenu ? item.title : (
                                                     <Link href={item.href} target="_blank">{item.title}</Link>
@@ -146,8 +144,7 @@ export default function Navigation() {
                             </div>
                         </div>
 
-                        {/* --- RIGHT COLUMN: FEATURED IMAGE (Hidden on Mobile) --- */}
-                        {/* 'hidden md:flex' ensures this vanishes on phones to give space for links */}
+                        {/* --- RIGHT COLUMN: FEATURED IMAGE --- */}
                         <div className="hidden md:flex w-1/2 h-full bg-[#050505] relative items-center justify-center border-l border-white/10 p-10">
                             <div className="relative w-full h-[80%] rounded-2xl overflow-hidden group">
                                 <Image
@@ -159,9 +156,17 @@ export default function Navigation() {
                                 <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/90 to-transparent">
                                     <h4 className="text-4xl font-bold text-white mb-2">KONARK 2025</h4>
                                     <p className="text-gray-300">Join the biggest tech fest of North India.</p>
-                                    <button className="mt-4 px-6 py-3 bg-[#ff4d00] text-white font-bold rounded-full hover:bg-white hover:text-black transition-all">
+
+                                    {/* ✅ FIXED: Used standard <a> tag. This is guaranteed to work. */}
+                                    {/* Added 'relative z-50' to force it on top of everything. */}
+                                    <a
+                                        href="https://tally.so/r/b59QAE"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="relative z-50 mt-4 inline-block px-6 py-3 bg-[#ff4d00] text-white font-bold rounded-full hover:bg-white hover:text-black transition-all"
+                                    >
                                         Register Now
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
