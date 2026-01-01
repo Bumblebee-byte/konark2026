@@ -8,7 +8,7 @@ import Image from "next/image";
 
 // 1. IMAGE PATHS
 // ✅ Keeping .JPG as per your successful test
-const myImages = Array.from({ length: 10 }, (_, i) => `/gallery/photo${i + 1}.jpg`);
+const myImages = Array.from({ length: 10 }, (_, i) => `/images/photo${i + 1}.jpg`);
 
 const sampleTitles = ["LEGACY", "INNOVATION", "FUTURE", "ROBOTICS", "CODE", "DESIGN", "CULTURE", "TECH", "VISION", "CREATE"];
 
