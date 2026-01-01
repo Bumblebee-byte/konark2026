@@ -51,22 +51,30 @@ export default function Navigation() {
     return (
         <>
             {/* 1. TOP BAR (Always Visible) */}
-            <nav className="absolute top-0 w-full p-8 flex justify-between items-center z-50 pointer-events-auto">
+            <nav className="absolute top-0 w-full p-4 md:p-8 flex justify-between items-center z-50 pointer-events-auto">
 
-                {/* Logo / Links */}
-                <div className="flex gap-6">
-                    <Link href="https://gjust.ac.in/" target="_blank" className="text-xl md:text-2xl font-bold tracking-tighter text-white mix-blend-difference hover:opacity-80 transition-opacity">
+                {/* Logo / Links - Responsive Text Size */}
+                <div className="flex gap-4 md:gap-6">
+                    <Link
+                        href="https://gjust.ac.in/"
+                        target="_blank"
+                        className="text-lg md:text-2xl font-bold tracking-tighter text-white mix-blend-difference hover:opacity-80 transition-opacity"
+                    >
                         GJUS&T
                     </Link>
-                    <Link href="https://www.iconnectgjust.in/" target="_blank" className="text-xl md:text-2xl font-bold tracking-tighter text-white mix-blend-difference hover:opacity-80 transition-opacity">
+                    <Link
+                        href="https://www.iconnectgjust.in/"
+                        target="_blank"
+                        className="text-lg md:text-2xl font-bold tracking-tighter text-white mix-blend-difference hover:opacity-80 transition-opacity"
+                    >
                         iConnect
                     </Link>
                 </div>
 
-                {/* Menu Button (Leitwind Style Green/Orange Button) */}
+                {/* Menu Button - Responsive Padding */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`px-6 py-2 rounded-full text-xs font-bold uppercase cursor-pointer transition-all z-50 
+                    className={`px-4 py-2 md:px-6 md:py-2 rounded-full text-[10px] md:text-xs font-bold uppercase cursor-pointer transition-all z-50 
             ${isOpen ? 'bg-white text-black' : 'bg-[#ff4d00] text-white hover:bg-white hover:text-black'}`}
                 >
                     {isOpen ? "Close" : "Menu"}
@@ -81,49 +89,51 @@ export default function Navigation() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: "-20px" }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="fixed inset-0 bg-[#111112] z-40 flex flex-col md:flex-row pt-24 md:pt-0"
+                        className="fixed inset-0 bg-[#111112] z-40 flex flex-col md:flex-row"
                     >
 
                         {/* --- LEFT COLUMN: NAVIGATION LINKS --- */}
-                        <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-8 md:px-24 overflow-y-auto">
-                            <div className="flex flex-col gap-6">
+                        {/* Added 'pt-24' specifically for mobile so links aren't hidden under the top bar */}
+                        <div className="w-full md:w-1/2 h-full flex flex-col px-6 pt-24 pb-10 md:px-24 md:py-0 justify-start md:justify-center overflow-y-auto">
+                            <div className="flex flex-col gap-4 md:gap-6">
                                 {menuItems.map((item, index) => (
-                                    <div key={index} className="flex flex-col items-start border-b border-white/10 pb-4 last:border-none">
+                                    <div key={index} className="flex flex-col items-start border-b border-white/10 pb-3 md:pb-4 last:border-none">
 
                                         {/* Main Link Header */}
                                         <div
-                                            className="group flex items-center gap-4 cursor-pointer"
+                                            className="group flex items-center justify-between w-full cursor-pointer"
                                             onClick={() => item.submenu && toggleSubmenu(index)}
                                         >
+                                            {/* Responsive Text Size: 3xl on mobile, 5xl on desktop */}
                                             <h3 className="text-3xl md:text-5xl font-bold text-white group-hover:text-[#ff4d00] transition-colors uppercase tracking-tight">
                                                 {item.submenu ? item.title : (
                                                     <Link href={item.href} target="_blank">{item.title}</Link>
                                                 )}
                                             </h3>
 
-                                            {/* The Leitwind "Plus" Icon */}
+                                            {/* Plus Icon */}
                                             {item.submenu && (
-                                                <span className={`text-2xl transition-transform duration-300 ${activeSubmenu === index ? 'rotate-45 text-[#ff4d00]' : 'text-gray-500'}`}>
+                                                <span className={`text-xl md:text-2xl transition-transform duration-300 ${activeSubmenu === index ? 'rotate-45 text-[#ff4d00]' : 'text-gray-500'}`}>
                           +
                         </span>
                                             )}
                                         </div>
 
-                                        {/* Submenu Expansion (Accordion) */}
+                                        {/* Submenu Expansion */}
                                         <AnimatePresence>
                                             {item.submenu && activeSubmenu === index && (
                                                 <motion.div
                                                     initial={{ height: 0, opacity: 0 }}
                                                     animate={{ height: "auto", opacity: 1 }}
                                                     exit={{ height: 0, opacity: 0 }}
-                                                    className="overflow-hidden flex flex-col gap-3 mt-4 ml-2"
+                                                    className="overflow-hidden flex flex-col gap-3 mt-3 ml-2 w-full"
                                                 >
                                                     {item.submenu.map((subItem, subIndex) => (
                                                         <Link
                                                             key={subIndex}
                                                             href={subItem.href}
                                                             target="_blank"
-                                                            className="text-lg text-gray-400 hover:text-[#ff4d00] transition-colors"
+                                                            className="text-base md:text-lg text-gray-400 hover:text-[#ff4d00] transition-colors py-1 block"
                                                         >
                                                             — {subItem.title}
                                                         </Link>
@@ -136,12 +146,12 @@ export default function Navigation() {
                             </div>
                         </div>
 
-                        {/* --- RIGHT COLUMN: FEATURED IMAGE / NEWSLETTER --- */}
+                        {/* --- RIGHT COLUMN: FEATURED IMAGE (Hidden on Mobile) --- */}
+                        {/* 'hidden md:flex' ensures this vanishes on phones to give space for links */}
                         <div className="hidden md:flex w-1/2 h-full bg-[#050505] relative items-center justify-center border-l border-white/10 p-10">
-                            {/* This mimics the "Subscribe to Newsletter" box in Leitwind */}
                             <div className="relative w-full h-[80%] rounded-2xl overflow-hidden group">
                                 <Image
-                                    src="/animeblue.jpg" // Uses your existing image
+                                    src="/animeblue.jpg"
                                     alt="Featured"
                                     fill
                                     className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
