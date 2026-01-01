@@ -3,21 +3,23 @@
 import Image from "next/image";
 import FluidReveal from "../components/FluidReveal";
 import Navigation from "../components/Navigation";
-import TiltCard from "../components/TiltCard"; // ✅ Import the new card
+import TiltCard from "../components/TiltCard";
+import GalleryScroll from "../components/GalleryScroll"; // ✅ Import the Gallery
 
 export default function Home() {
 
     const scrollToDetails = () => {
-        const detailsSection = document.getElementById('details-section');
-        if (detailsSection) {
-            detailsSection.scrollIntoView({ behavior: 'smooth' });
+        // Modified to scroll to the gallery first, as it's the next section
+        const gallerySection = document.getElementById('gallery-section');
+        if (gallerySection) {
+            gallerySection.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     return (
         <main className="w-full bg-[#111112] text-white">
 
-            {/* --- HERO SECTION --- */}
+            {/* --- SECTION 1: HERO --- */}
             <section className="h-screen w-full relative flex flex-col items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <FluidReveal topImage="/animegreen.jpg" bottomImage="/animeblue.jpg" />
@@ -36,10 +38,14 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* --- CONTENT SECTION: COMPETITIONS --- */}
-            <section id="details-section" className="min-h-screen w-full bg-[#050505] border-t border-white/10 p-6 md:p-20 relative z-10">
+            {/* --- SECTION 2: LANDO NORRIS STYLE GALLERY --- */}
+            {/* This acts as the buffer between Hero and Events */}
+            <div id="gallery-section">
+                <GalleryScroll />
+            </div>
 
-                {/* Header */}
+            {/* --- SECTION 3: EVENT DETAILS --- */}
+            <section id="details-section" className="min-h-screen w-full bg-[#050505] border-t border-white/10 p-6 md:p-20 relative z-10">
                 <div className="flex flex-col items-center text-center mb-16">
                     <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800">
                         Explore Events
@@ -49,41 +55,16 @@ export default function Home() {
                     </p>
                 </div>
 
-                {/* ✅ NEW GRID WITH TILT CARDS */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                    <TiltCard
-                        title="Ideathon"
-                        description="Pitch your revolutionary ideas to industry experts and win funding."
-                        icon="💡"
-                    />
-                    <TiltCard
-                        title="Hackathon"
-                        description="24-hour coding marathon to solve real-world problems."
-                        icon="💻"
-                    />
-                    <TiltCard
-                        title="Robo Wars"
-                        description="Build your ultimate bot and destroy the competition in the arena."
-                        icon="🤖"
-                    />
-                    <TiltCard
-                        title="Gaming"
-                        description="FIFA, Valorant, and BGMI tournaments with massive prize pools."
-                        icon="🎮"
-                    />
-                    <TiltCard
-                        title="Workshops"
-                        description="Hands-on learning sessions on AI, Blockchain, and Cyber Security."
-                        icon="🛠️"
-                    />
-                    <TiltCard
-                        title="Star Night"
-                        description="Conclude the fest with a live performance by a celebrity artist."
-                        icon="✨"
-                    />
+                    <TiltCard title="Ideathon" description="Pitch your revolutionary ideas to industry experts and win funding." icon="💡" />
+                    <TiltCard title="Hackathon" description="24-hour coding marathon to solve real-world problems." icon="💻" />
+                    <TiltCard title="Robo Wars" description="Build your ultimate bot and destroy the competition in the arena." icon="🤖" />
+                    <TiltCard title="Gaming" description="FIFA, Valorant, and BGMI tournaments with massive prize pools." icon="🎮" />
+                    <TiltCard title="Workshops" description="Hands-on learning sessions on AI, Blockchain, and Cyber Security." icon="🛠️" />
+                    <TiltCard title="Star Night" description="Conclude the fest with a live performance by a celebrity artist." icon="✨" />
                 </div>
-
             </section>
+
         </main>
     );
 }
