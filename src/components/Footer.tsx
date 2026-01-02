@@ -20,7 +20,7 @@ export default function Footer() {
                 <div>
                     <h4 className="text-[#ff4d00] font-bold uppercase tracking-widest mb-6">Explore</h4>
                     <ul className="space-y-4 text-gray-400">
-                        <li><Link href="#" className="hover:text-white transition-colors">Events</Link></li>
+                        <li><Link href="/events" className="hover:text-white transition-colors">Events</Link></li>
                         <li><Link href="#" className="hover:text-white transition-colors">Workshops</Link></li>
                         <li><Link href="#" className="hover:text-white transition-colors">Sponsors</Link></li>
                         <li><Link href="#" className="hover:text-white transition-colors">Our Team</Link></li>
@@ -31,15 +31,15 @@ export default function Footer() {
                 <div>
                     <h4 className="text-[#ff4d00] font-bold uppercase tracking-widest mb-6">Contact</h4>
                     <ul className="space-y-4 text-gray-400">
-                        <li>konark@gjust.org</li>
-                        <li>+91 98765 43210</li>
+                        <li><Link href="https://www.iconnectgjust.in/" className="hover:text-white transition-colors">iConnect</Link></li>
+                        <li><Link href="tel:+917988823880" className="#">7988823880</Link></li>
                         <li>Hisar, Haryana, India</li>
                     </ul>
                 </div>
             </div>
 
             {/* Bottom Bar */}
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-gray-500 uppercase tracking-widest">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-s text-gray-500 uppercase tracking-widest">
                 <p>&copy; 2025 KONARK. All Rights Reserved.</p>
                 <p>Designed with ❤️ by Prashant</p>
             </div>

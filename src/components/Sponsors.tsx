@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 // You can replace these with real logo images later.
 // For now, we use text to show the effect immediately.
 const sponsors = [
-    "GOOGLE", "MICROSOFT", "AMAZON", "TESLA", "OPENAI",
+    "Jack & Jones", "MICROSOFT", "CELIO", "TESLA", "OPENAI",
     "NVIDIA", "INTEL", "IBM", "SAMSUNG", "APPLE"
 ];
 
@@ -26,7 +26,7 @@ export default function Sponsors() {
                     <motion.div
                         className="flex gap-12 md:gap-24 whitespace-nowrap"
                         animate={{ x: [0, -1000] }}
-                        transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+                        transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
                     >
                         {[...sponsors, ...sponsors, ...sponsors].map((sponsor, i) => (
                             <span key={i} className="text-4xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-white/5 uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">

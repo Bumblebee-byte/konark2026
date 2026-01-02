@@ -7,10 +7,9 @@ import { motion, AnimatePresence } from 'motion/react';
 
 // --- MENU CONFIGURATION ---
 const menuItems = [
-    {
-        title: "Home",
-        href: "https://youtube.com"
-    },
+    { title: "Home", href: "/" },
+    { title: "Contact Team", href: "/team" },
+    { title: "All Events", href: "/events" },
     {
         title: "Competitions",
         href: "#",
@@ -22,22 +21,9 @@ const menuItems = [
             { title: "Gaming", href: "https://youtube.com" }
         ]
     },
-    {
-        title: "Workshops",
-        href: "https://youtube.com"
-    },
-    {
-        title: "Sponsors",
-        href: "https://youtube.com"
-    },
-    {
-        title: "Gallery",
-        href: "https://youtube.com"
-    },
-    {
-        title: "Contact Team",
-        href: "https://youtube.com"
-    }
+    { title: "Workshops", href: "https://youtube.com" },
+    { title: "Sponsors", href: "https://youtube.com" },
+    { title: "Gallery", href: "https://youtube.com" },
 ];
 
 export default function Navigation() {
@@ -53,8 +39,23 @@ export default function Navigation() {
             {/* 1. TOP BAR (Always Visible) */}
             <nav className="absolute top-0 w-full p-4 md:p-8 flex justify-between items-center z-50 pointer-events-auto">
 
-                {/* Logo / Links */}
-                <div className="flex gap-4 md:gap-6">
+                {/* LEFT SIDE: Home Button + Logo Links */}
+                <div className="flex items-center gap-4 md:gap-6">
+
+                    {/* ✅ UPDATED: CLEAN HOME BUTTON (No Circle) */}
+                    <Link
+                        href="/"
+                        className="flex items-center justify-center text-white mix-blend-difference hover:text-[#ff4d00] transition-colors duration-300"
+                        title="Back to Home"
+                    >
+                        {/* Simple Home SVG Icon - Slightly larger for better visibility without the circle */}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="md:w-7 md:h-7">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </Link>
+
+                    {/* Existing Links */}
                     <Link
                         href="https://gjust.ac.in/"
                         target="_blank"
@@ -101,19 +102,21 @@ export default function Navigation() {
                                         {/* Main Link Header */}
                                         <div
                                             className="group flex items-center justify-between w-full cursor-pointer"
-                                            onClick={() => item.submenu && toggleSubmenu(index)}
+                                            onClick={() => item.submenu ? toggleSubmenu(index) : null}
                                         >
                                             <h3 className="text-3xl md:text-5xl font-bold text-white group-hover:text-[#ff4d00] transition-colors uppercase tracking-tight">
-                                                {item.submenu ? item.title : (
-                                                    <Link href={item.href} target="_blank">{item.title}</Link>
+                                                {item.submenu ? (
+                                                    <span>{item.title}</span>
+                                                ) : (
+                                                    <Link href={item.href} onClick={() => setIsOpen(false)}>{item.title}</Link>
                                                 )}
                                             </h3>
 
                                             {/* Plus Icon */}
                                             {item.submenu && (
                                                 <span className={`text-xl md:text-2xl transition-transform duration-300 ${activeSubmenu === index ? 'rotate-45 text-[#ff4d00]' : 'text-gray-500'}`}>
-                          +
-                        </span>
+                                                    +
+                                                </span>
                                             )}
                                         </div>
 
@@ -157,8 +160,6 @@ export default function Navigation() {
                                     <h4 className="text-4xl font-bold text-white mb-2">KONARK 2025</h4>
                                     <p className="text-gray-300">Join the biggest tech fest of North India.</p>
 
-                                    {/* ✅ FIXED: Used standard <a> tag. This is guaranteed to work. */}
-                                    {/* Added 'relative z-50' to force it on top of everything. */}
                                     <a
                                         href="https://tally.so/r/b59QAE"
                                         target="_blank"

@@ -18,8 +18,8 @@ const offsets = ["mt-0", "mt-32", "-mt-32", "mt-16", "-mt-16", "mt-48", "-mt-24"
 
 const items = myImages.map((imgSrc, i) => ({
     id: i,
-    title: `${sampleTitles[i % sampleTitles.length]} ${2025 - i}`,
-    year: `${2025 - i}`,
+    title: `${sampleTitles[i % sampleTitles.length]} ${10 - i}`,
+    year: `${10 - i}`,
     img: imgSrc,
     widthClass: widths[i % widths.length],
     heightClass: heights[i % heights.length],
@@ -78,7 +78,7 @@ export default function GalleryScroll() {
                             <span className="text-[#ff4d00]">Legacy</span>
                         </h2>
                         <p className="text-gray-400 mt-6 max-w-sm text-sm md:text-lg">
-                            50 years of innovation. Scroll to explore.
+                             Scroll to explore.
                         </p>
                         <div className="w-24 h-1 bg-[#ff4d00] mt-10"></div>
                     </div>
