@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 // You can replace these with real logo images later.
 // For now, we use text to show the effect immediately.
 const sponsors = [
-    "Jack & Jones", "MICROSOFT", "CELIO", "TESLA", "OPENAI",
+    "Jack & Jones", "MICROSOFT", "RedBull", "TESLA", "OPENAI",
     "NVIDIA", "INTEL", "IBM", "SAMSUNG", "APPLE"
 ];
 

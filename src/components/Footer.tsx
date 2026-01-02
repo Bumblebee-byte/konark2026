@@ -22,7 +22,7 @@ export default function Footer() {
                     <ul className="space-y-4 text-gray-400">
                         <li><Link href="/events" className="hover:text-white transition-colors">Events</Link></li>
                         <li><Link href="#" className="hover:text-white transition-colors">Workshops</Link></li>
-                        <li><Link href="#" className="hover:text-white transition-colors">Sponsors</Link></li>
+                        <li><Link href="/sponsers" className="hover:text-white transition-colors">Sponsors</Link></li>
                         <li><Link href="#" className="hover:text-white transition-colors">Our Team</Link></li>
                     </ul>
                 </div>
